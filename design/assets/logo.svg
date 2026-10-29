@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Exorcist ghost">
+  <path fill="#9EF0D0" d="M10 31C10 17 19 8 32 8s22 9 22 23v25l-7-6-7 6-8-6-8 6-7-6-7 6V31Z"/>
+  <circle cx="24" cy="30" r="4" fill="#0B0D12"/>
+  <circle cx="40" cy="30" r="4" fill="#0B0D12"/>
+  <path d="M24 43c5 4 11 4 16 0" fill="none" stroke="#0B0D12" stroke-width="3" stroke-linecap="round"/>
+</svg>

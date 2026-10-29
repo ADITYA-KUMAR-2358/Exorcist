@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exorcist Finding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "file", "line", "severity", "raw", "snippet", "verdict", "reason", "proposed_fix", "status"],
+  "properties": {
+    "id": {"type": "string", "format": "uuid"},
+    "type": {"enum": ["secret", "dependency", "dead_code", "zombie_job"]},
+    "file": {"type": "string"},
+    "line": {"type": "integer", "minimum": 1},
+    "severity": {"enum": ["low", "medium", "high", "critical"]},
+    "raw": {"type": "object", "additionalProperties": true},
+    "snippet": {"type": "string"},
+    "verdict": {"enum": ["real_haunting", "false_alarm", "needs_human_review"]},
+    "reason": {"type": "string", "maxLength": 240},
+    "proposed_fix": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["kind", "diff"],
+      "properties": {
+        "kind": {"enum": ["env_var", "bump_dep", "delete", "comment_out"]},
+        "diff": {"type": "string"}
+      }
+    },
+    "status": {"enum": ["found", "triaged", "banished", "pr_opened"]}
+  }
+}

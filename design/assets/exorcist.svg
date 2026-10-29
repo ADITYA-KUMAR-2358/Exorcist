@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Exorcist mascot cleansing a code spirit</title>
+  <desc id="desc">A colorful ghost mascot holds a glowing ward beside a small code spirit.</desc>
+  <defs>
+    <linearGradient id="cloak" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#6c5ce7"/><stop offset="1" stop-color="#d94fb5"/>
+    </linearGradient>
+    <linearGradient id="ward" x1="0" x2="1"><stop stop-color="#62f3d0"/><stop offset="1" stop-color="#ffd166"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="7"/></filter>
+  </defs>
+  <circle cx="470" cy="145" r="92" fill="#62f3d0" opacity=".22" filter="url(#glow)"/>
+  <path d="M92 271c3-101 28-167 94-167 67 0 92 66 95 167l-31-23-32 25-32-25-32 25-30-25-32 23Z" fill="url(#cloak)" stroke="#f4f7ff" stroke-width="7"/>
+  <circle cx="153" cy="158" r="13" fill="#101426"/><circle cx="219" cy="158" r="13" fill="#101426"/>
+  <path d="M157 197c19 16 39 16 58 0" fill="none" stroke="#101426" stroke-width="9" stroke-linecap="round"/>
+  <path d="M300 177c55-24 98-21 143 7" fill="none" stroke="#ffd166" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="466" cy="151" r="57" fill="#141821" stroke="url(#ward)" stroke-width="9"/>
+  <path d="m440 150 20 18 35-39" fill="none" stroke="#62f3d0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M423 222h89M452 247h31" stroke="#ff6b8a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M386 78l9-21m72 23 14-18m-74 178-20 13m97-17 20 13" stroke="#ffd166" stroke-width="7" stroke-linecap="round"/>
+  <text x="326" y="326" fill="#e6e8ee" font-family="ui-monospace,monospace" font-size="20" letter-spacing="3">BANISH THE BUGS</text>
+</svg>

@@ -1,0 +1,20 @@
+{
+  "_note": "Fonts require system fallbacks because reports work offline with no external assets.",
+  "color": {
+    "bg": "#0B0D12",
+    "surface": "#141821",
+    "text": "#E6E8EE",
+    "muted": "#8A91A3",
+    "accent_ghost": "#9EF0D0",
+    "danger": "#FF5C7A",
+    "warn": "#FFB454",
+    "ok": "#6EE7A8"
+  },
+  "font": {
+    "display": "'Special Elite', Georgia, serif",
+    "body": "Inter, system-ui, sans-serif",
+    "mono": "'JetBrains Mono', ui-monospace, monospace"
+  },
+  "radius": "12px",
+  "spacing": [4, 8, 16, 24, 40]
+}

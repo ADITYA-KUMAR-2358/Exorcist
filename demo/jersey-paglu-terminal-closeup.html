@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows PowerShell - Exorcist scan</title>
+  <style>
+    :root { color-scheme: dark; --bg: #012456; --text: #f5f7fb; --dim: #c8d4e5; --cyan: #66e3ff; --yellow: #ffe66d; --green: #8cffc1; --purple: #d7b4ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 46px; background: #e7e9ed; font: 17px/1.58 "Cascadia Mono", Consolas, monospace; }
+    .window { width: min(1240px, 100%); background: var(--bg); color: var(--text); box-shadow: 0 20px 55px #1c263955; border: 1px solid #6d7480; }
+    .bar { height: 48px; display: flex; align-items: center; padding: 0 18px; background: #20232a; font: 14px "Segoe UI", sans-serif; color: #e6e9ef; }
+    .ps { margin-right: 12px; color: #b8c2d2; font-weight: 600; } .bar-title { flex: 1; text-align: center; margin-left: 80px; color: #d8dce4; }
+    .controls { display: flex; gap: 25px; color: #d8dce4; font-size: 15px; }
+    .body { padding: 30px 34px 38px; min-height: 600px; } pre { margin: 0; white-space: pre-wrap; }
+    .prompt { color: var(--cyan); } .cmd { color: #fff; } .brand { color: var(--green); font-weight: 700; } .key { color: var(--yellow); }
+    .good { color: var(--green); } .dim { color: var(--dim); } .model { color: var(--purple); }
+    .cursor { display: inline-block; width: 10px; height: 20px; background: #fff; vertical-align: -3px; margin-left: 4px; }
+  </style>
+</head>
+<body>
+  <main class="window" aria-label="PowerShell scan capture">
+    <header class="bar"><span class="ps">▣</span><span class="bar-title">Windows PowerShell</span><span class="controls">— □ ×</span></header>
+    <section class="body">
+      <pre><span class="prompt">PS D:\Exorcist&gt;</span> <span class="cmd">exorcist scan D:\Exorcist\demo\jersey-paglu --model gemma3:4b --types secrets,deps,deadcode,cron --plain</span>
+
+<span class="brand">EXORCIST</span>  <span class="dim">local code cleansing ritual</span>
+<span class="key">Repository</span>  https://github.com/ADITYA-KUMAR-2358/jersey-paglu
+<span class="key">Commit</span>     a647aff  Improved the landing page
+<span class="key">Scanners</span>   secrets · dependencies · dead code · zombie jobs
+<span class="key">Model</span>      <span class="model">gemma3:4b (localhost Ollama)</span>
+
+<span class="good">✓ 0 spirits found in jersey-paglu.</span>
+<span class="good">✓ 0 network calls</span>  <span class="dim">scan exit code: 0 · repository is quiet</span>
+
+<span class="prompt">PS D:\Exorcist&gt;</span> <span class="cmd">exorcist report D:\Exorcist\demo\jersey-paglu --model gemma3:4b --out jersey-paglu-report.html</span>
+<span class="good">✓ Sealing offline report</span>
+<span class="good">✓ Report sealed</span>  <span class="dim">D:\Exorcist\demo\jersey-paglu-report.html</span>
+
+<span class="prompt">PS D:\Exorcist&gt;</span><span class="cursor"></span></pre>
+    </section>
+  </main>
+</body>
+</html>

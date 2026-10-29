@@ -1,0 +1,8 @@
+﻿{
+  "repository": "jersey-paglu",
+  "scan_time": "2026-10-29T07:20:21.702921+00:00",
+  "duration_seconds": 0.016000000000531145,
+  "model": "gemma3:4b",
+  "network_calls": 0,
+  "findings": []
+}

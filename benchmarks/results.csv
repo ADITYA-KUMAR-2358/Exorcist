@@ -1,0 +1,5 @@
+model,repository,findings,false_positive_rate,seconds_per_finding
+qwen2.5-coder:3b,offline-fixture,4,0.0,0.0
+qwen2.5-coder:7b,not-run,0,,
+mistral:7b-instruct,not-run,0,,
+cloud-comparison,not-run,0,,

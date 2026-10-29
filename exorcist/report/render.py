@@ -1,0 +1,47 @@
+"""Offline static HTML report renderer."""
+
+from collections import Counter
+from html import escape
+from pathlib import Path
+
+from exorcist.findings import ReportContext
+
+MASCOT = """<svg class="mascot" viewBox="0 0 640 360" role="img" aria-label="Colorful Exorcist mascot">
+<defs><linearGradient id="cloak" x1="0" x2="1"><stop stop-color="#6c5ce7"/><stop offset="1" stop-color="#d94fb5"/></linearGradient><linearGradient id="ward" x1="0" x2="1"><stop stop-color="#62f3d0"/><stop offset="1" stop-color="#ffd166"/></linearGradient></defs>
+<circle cx="470" cy="145" r="92" fill="#62f3d0" opacity=".2"/><path d="M92 271c3-101 28-167 94-167 67 0 92 66 95 167l-31-23-32 25-32-25-32 25-30-25-32 23Z" fill="url(#cloak)" stroke="#f4f7ff" stroke-width="7"/><circle cx="153" cy="158" r="13" fill="#101426"/><circle cx="219" cy="158" r="13" fill="#101426"/><path d="M157 197c19 16 39 16 58 0" fill="none" stroke="#101426" stroke-width="9" stroke-linecap="round"/><path d="M300 177c55-24 98-21 143 7" fill="none" stroke="#ffd166" stroke-width="11" stroke-linecap="round"/><circle cx="466" cy="151" r="57" fill="#141821" stroke="url(#ward)" stroke-width="9"/><path d="m440 150 20 18 35-39" fill="none" stroke="#62f3d0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><text x="326" y="326" fill="#e6e8ee" font-family="ui-monospace,monospace" font-size="20" letter-spacing="3">BANISH THE BUGS</text></svg>"""
+
+CSS = """:root{color-scheme:dark;--bg:#0b0d12;--surface:#141821;--text:#e6e8ee;--muted:#8a91a3;--accent:#9ef0d0;--danger:#ff5c7a;--warn:#ffb454}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px system-ui,sans-serif;line-height:1.5}main{max-width:1100px;margin:auto;padding:40px 20px}header{border-bottom:1px solid #29303d;padding-bottom:28px;display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:center}h1{font:42px Georgia,serif;margin:8px 0;color:var(--accent)}p{color:var(--muted)}.meta{display:flex;gap:18px;flex-wrap:wrap;font:13px ui-monospace,monospace;color:var(--muted)}.mascot{width:100%;height:auto}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}.summary{background:var(--surface);border:1px solid #29303d;border-radius:12px;padding:16px}.summary strong{display:block;font-size:28px;color:var(--accent)}.finding{background:var(--surface);border:1px solid #29303d;border-radius:12px;margin:14px 0;padding:16px}.finding summary{cursor:pointer;font-weight:650}.badge{display:inline-block;border-radius:999px;padding:3px 9px;margin-right:8px;font:12px ui-monospace,monospace}.real_haunting{color:#0b0d12;background:var(--danger)}.false_alarm{color:#0b0d12;background:var(--accent)}.needs_human_review{color:#0b0d12;background:var(--warn)}code,pre{font:13px ui-monospace,monospace}pre{overflow:auto;background:#0b0d12;padding:12px;border-radius:8px;color:#d4d9e3}footer{margin-top:32px;border-top:1px solid #29303d;padding-top:18px;color:var(--muted);font:13px ui-monospace,monospace}@media(max-width:700px){header{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}h1{font-size:34px}}"""
+
+
+def render(context: ReportContext) -> str:
+    counts = Counter(item.type.value for item in context.findings)
+    cards = "".join(
+        f'<div class="summary"><span>{label}</span><strong>{counts.get(key, 0)}</strong></div>'
+        for key, label in (("secret", "Secrets"), ("dependency", "Dependencies"),
+                           ("dead_code", "Dead code"), ("zombie_job", "Zombie jobs"))
+    )
+    items = []
+    for item in context.findings:
+        verdict = item.verdict.value if item.verdict else "found"
+        raw = escape(str(item.raw.get("match_redacted", "")))
+        diff = escape(item.proposed_fix.diff) if item.proposed_fix else "No fix proposed."
+        items.append(
+            f'<details class="finding"><summary><span class="badge {verdict}">{verdict}</span>'
+            f'{escape(item.file)}:{item.line} {escape(str(item.raw.get("rule", "")))}</summary>'
+            f'<p>Redacted match: <code>{raw}</code></p><p>{escape(item.reason or "Awaiting triage.")}</p>'
+            f'<pre>{diff}</pre></details>'
+        )
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Exorcist report</title>
+<style>{CSS}</style></head><body><main><header><p>EXORCIST / LOCAL REPORT</p>
+<h1>{escape(context.repository)}</h1><p>{len(context.findings)} spirits found.</p>
+<div class="meta"><span>{escape(context.scan_time)}</span><span>model: {escape(context.model)}</span></div></div>{MASCOT}</header>
+<section class="cards" aria-label="Finding counts">{cards}</section><section aria-label="Findings">
+{''.join(items) or '<p>No findings. The repository is quiet.</p>'}</section>
+<footer>duration: {context.duration_seconds:.2f}s | {context.network_calls} network calls | offline report</footer>
+</main></body></html>"""
+
+
+def write_report(context: ReportContext, output: Path) -> None:
+    output.write_text(render(context), encoding="utf-8")
