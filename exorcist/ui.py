@@ -23,12 +23,18 @@ def heading(title: str, subtitle: str = "") -> None:
 
 
 def banner() -> None:
-    secho("   .-''''-.   ", fg=Ink.MAGENTA, bold=True, nl=False)
-    secho(" EXORCIST", fg=Ink.CYAN, bold=True)
-    secho("  /  o  o  \\", fg=Ink.YELLOW, bold=True)
-    secho("  |   ^   |  ", fg=Ink.YELLOW, bold=True)
-    secho("  \\_\\___/_/  ", fg=Ink.MAGENTA, bold=True)
-    secho("  local code cleansing ritual", fg=Ink.WHITE, dim=True)
+    wordmark = (
+        "  EEEEE X   X  OOO  RRRR   CCCC  III  SSS  TTTTT",
+        "  E      X X  O   O R   R  C       I  S       T  ",
+        "  EEEE    X   O   O RRRR   C       I   SSS    T  ",
+        "  E      X X  O   O R R    C       I      S   T  ",
+        "  EEEEE X   X  OOO  R  RR  CCCC  III  SSS    T  ",
+    )
+    secho("", nl=True)
+    for line in wordmark:
+        secho(line, fg=Ink.CYAN, bold=True)
+    secho("  LOCAL-FIRST CODE CLEANSING RITUAL", fg=Ink.MAGENTA, bold=True)
+    secho("  scanners find  /  local Ollama triages  /  zero telemetry", fg=Ink.WHITE, dim=True)
 
 
 @contextmanager
@@ -60,6 +66,7 @@ def command_table() -> None:
         ("version", "Show version and runtime"),
     )
     secho("\n  COMMANDS", fg=Ink.YELLOW, bold=True)
+    secho("  ------------------------------------------------------------------", fg=Ink.BLUE, dim=True)
     for command, description in rows:
         secho(f"  {command:<12}", fg=Ink.CYAN, bold=True, nl=False)
         secho(description, fg=Ink.WHITE)

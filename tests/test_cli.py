@@ -20,6 +20,15 @@ def test_scan_missing_ollama_model_returns_human_review_json() -> None:
     assert "Traceback" not in payload
 
 
+def test_root_command_uses_text_wordmark_without_ghost_art() -> None:
+    result = runner.invoke(app, [])
+
+    assert result.exit_code == 0
+    assert "EEEE" in result.output
+    assert "local-first code cleansing" in result.output.lower()
+    assert ".-''''-." not in result.output
+
+
 def test_invalid_repository_paths_return_tool_error(tmp_path: Path) -> None:
     missing = tmp_path / "missing"
 

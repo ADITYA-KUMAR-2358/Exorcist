@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exorcist demo terminal</title>
   <style>
-    :root { color-scheme: dark; --bg: #090b12; --panel: #111522; --line: #293149; --text: #e8ecf5; --muted: #8d98b2; --mint: #62f3d0; --violet: #9c7cff; --yellow: #ffd166; }
+    :root { color-scheme: dark; --bg: #08090d; --panel: #101116; --line: #2a2c34; --text: #edf0f7; --muted: #8e93a3; --cyan: #62e6ef; --violet: #d34acb; --yellow: #ffd166; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 44px; background: radial-gradient(circle at 20% 5%, #25204a 0, transparent 38%), var(--bg); color: var(--text); font: 16px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; }
-    .terminal { width: min(1180px, 100%); overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: 0 30px 90px #0009, 0 0 0 1px #ffffff08 inset; }
-    .chrome { display: flex; align-items: center; gap: 9px; padding: 15px 20px; border-bottom: 1px solid var(--line); background: #171c2b; }
-    .dot { width: 13px; height: 13px; border-radius: 50%; display: inline-block; }
-    .red { background: #ff657a; } .gold { background: var(--yellow); } .green { background: var(--mint); }
-    .title { margin-left: 12px; color: var(--muted); font-size: 13px; letter-spacing: .04em; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 44px; background: #1b1d22; color: var(--text); font: 16px/1.55 "Cascadia Mono", Consolas, monospace; }
+    .terminal { width: min(1180px, 100%); overflow: hidden; border: 1px solid #52545b; background: var(--panel); box-shadow: 0 30px 90px #000b; }
+    .chrome { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; background: #25272c; color: #d9dce3; font: 13px "Segoe UI", sans-serif; }
+    .title { letter-spacing: .04em; } .controls { word-spacing: 18px; color: #c9ccd4; }
     pre { margin: 0; padding: 34px 38px 40px; white-space: pre-wrap; }
-    .prompt { color: var(--violet); } .command { color: var(--text); } .brand { color: var(--mint); font-weight: 700; }
-    .ok { color: var(--mint); } .label { color: var(--yellow); } .muted { color: var(--muted); } .result { color: #d7dded; }
+    .prompt { color: var(--cyan); } .command { color: var(--text); } .brand { color: var(--cyan); font-weight: 700; letter-spacing: .03em; }
+    .ok { color: #7ee8a7; } .label { color: var(--violet); } .muted { color: var(--muted); } .result { color: #d7dded; }
     .footer { padding: 13px 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
   </style>
 </head>
 <body>
   <section class="terminal" aria-label="Exorcist terminal demo">
-    <header class="chrome"><span class="dot red"></span><span class="dot gold"></span><span class="dot green"></span><span class="title">exorcist-demo · local-first scan</span></header>
+    <header class="chrome"><span class="title">exorcist-demo - local-first scan</span><span class="controls">_ □ X</span></header>
     <pre><span class="prompt">PS D:\Exorcist&gt;</span> <span class="command">exorcist scan D:\Exorcist\demo\jersey-paglu --model gemma3:4b --types secrets,deps,deadcode,cron --plain</span>
 
-<span class="brand">EXORCIST</span>  <span class="muted">local code cleansing ritual</span>
+<span class="brand">EEEE  X  X   OOO   RRRR   CCCC  III  SSS  TTTT</span>
+<span class="brand">E      XX   O   O  R   R  C       I  S      T</span>
+<span class="brand">EEE     X   O   O  RRRR   C       I   SSS   T</span>
+<span class="brand">E      XX   O   O  R R    C       I      S  T</span>
+<span class="brand">EEEE  X  X   OOO   R  RR  CCCC  III  SSS   T</span>
+<span class="muted">local code cleansing ritual</span>
 <span class="label">Repository</span>  https://github.com/ADITYA-KUMAR-2358/jersey-paglu
 <span class="label">Commit</span>     a647aff  Improved the landing page
 <span class="label">Scanners</span>   secrets · dependencies · dead code · zombie jobs

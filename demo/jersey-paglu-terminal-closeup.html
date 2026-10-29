@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Windows PowerShell - Exorcist scan</title>
   <style>
-    :root { color-scheme: dark; --bg: #012456; --text: #f5f7fb; --dim: #c8d4e5; --cyan: #66e3ff; --yellow: #ffe66d; --green: #8cffc1; --purple: #d7b4ff; }
+    :root { color-scheme: dark; --bg: #08090d; --text: #f5f7fb; --dim: #a7adbc; --cyan: #66e3ff; --yellow: #ffe66d; --green: #8cffc1; --purple: #e260d4; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 46px; background: #e7e9ed; font: 17px/1.58 "Cascadia Mono", Consolas, monospace; }
-    .window { width: min(1240px, 100%); background: var(--bg); color: var(--text); box-shadow: 0 20px 55px #1c263955; border: 1px solid #6d7480; }
-    .bar { height: 48px; display: flex; align-items: center; padding: 0 18px; background: #20232a; font: 14px "Segoe UI", sans-serif; color: #e6e9ef; }
-    .ps { margin-right: 12px; color: #b8c2d2; font-weight: 600; } .bar-title { flex: 1; text-align: center; margin-left: 80px; color: #d8dce4; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 46px; background: #1b1d22; font: 17px/1.58 "Cascadia Mono", Consolas, monospace; }
+    .window { width: min(1240px, 100%); background: var(--bg); color: var(--text); box-shadow: 0 20px 55px #000b; border: 1px solid #6d7480; }
+    .bar { height: 48px; display: flex; align-items: center; padding: 0 18px; background: #25272c; font: 14px "Segoe UI", sans-serif; color: #e6e9ef; }
+    .ps { margin-right: 12px; color: #b8c2d2; font-weight: 600; } .bar-title { flex: 1; text-align: left; color: #d8dce4; }
     .controls { display: flex; gap: 25px; color: #d8dce4; font-size: 15px; }
     .body { padding: 30px 34px 38px; min-height: 600px; } pre { margin: 0; white-space: pre-wrap; }
     .prompt { color: var(--cyan); } .cmd { color: #fff; } .brand { color: var(--green); font-weight: 700; } .key { color: var(--yellow); }
@@ -24,7 +24,12 @@
     <section class="body">
       <pre><span class="prompt">PS D:\Exorcist&gt;</span> <span class="cmd">exorcist scan D:\Exorcist\demo\jersey-paglu --model gemma3:4b --types secrets,deps,deadcode,cron --plain</span>
 
-<span class="brand">EXORCIST</span>  <span class="dim">local code cleansing ritual</span>
+<span class="brand">EEEE  X  X   OOO   RRRR   CCCC  III  SSS  TTTT</span>
+<span class="brand">E      XX   O   O  R   R  C       I  S      T</span>
+<span class="brand">EEE     X   O   O  RRRR   C       I   SSS   T</span>
+<span class="brand">E      XX   O   O  R R    C       I      S  T</span>
+<span class="brand">EEEE  X  X   OOO   R  RR  CCCC  III  SSS   T</span>
+<span class="dim">local code cleansing ritual</span>
 <span class="key">Repository</span>  https://github.com/ADITYA-KUMAR-2358/jersey-paglu
 <span class="key">Commit</span>     a647aff  Improved the landing page
 <span class="key">Scanners</span>   secrets · dependencies · dead code · zombie jobs

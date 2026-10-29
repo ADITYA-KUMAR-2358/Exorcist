@@ -80,7 +80,7 @@ tools\gitleaks\gitleaks.exe
 
 These are ignored by Git and are detected automatically by `exorcist doctor`.
 
-Run the colorful terminal experience:
+Run the branded terminal experience:
 
 ```powershell
 exorcist scan tests/cursed_repo
